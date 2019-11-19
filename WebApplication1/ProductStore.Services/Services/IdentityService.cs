@@ -114,11 +114,9 @@ namespace ProductStore.Services.Services
             {
                 Subject = new ClaimsIdentity(new[]
                 {
-                    new Claim (JwtRegisteredClaimNames.Sub, user.Email),
-                    new Claim (JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                    new Claim (JwtRegisteredClaimNames.Email, user.Email),
+                    new Claim (ClaimTypes.Email, user.Email),
                     new Claim (ClaimsIdentity.DefaultNameClaimType, user.LastName),
-                    new Claim (ClaimsIdentity.DefaultRoleClaimType, user.Role)
+                    new Claim(ClaimTypes.Role, user.Role)
                 }),               
                 Expires = DateTime.UtcNow.AddHours(2),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)

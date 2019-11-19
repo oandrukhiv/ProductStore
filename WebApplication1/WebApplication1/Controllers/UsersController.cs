@@ -1,12 +1,53 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 using ProductStore.Entities.Models;
 using ProductStore.Entities.Repos;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace WebApplication1.Controllers
 {
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true, Inherited = true)]
+    public class CustomAuthorizeAttribute : AuthorizeAttribute, IAuthorizationFilter
+    {
+        private readonly string[] _roles;
+
+        public CustomAuthorizeAttribute(params string[] roles) : base()
+        {
+            _roles = roles;
+        }
+
+        public CustomAuthorizeAttribute() : base()
+        { }
+
+
+        public void OnAuthorization(AuthorizationFilterContext context)
+        {
+            var user = context.HttpContext.User;
+
+            if (!user?.Identity?.IsAuthenticated != false)
+            {
+                // it isn't needed to set unauthorized result 
+                // as the base class already requires the user to be authenticated
+                // this also makes redirect to a login page work properly
+                 context.Result = new UnauthorizedResult();
+                return;
+            }
+
+            var role = user.Claims.FirstOrDefault(c => c.Type == "role");
+            var isInCurrentRole =  _roles?.Any(r => string.Equals(role?.Value, r, StringComparison.InvariantCultureIgnoreCase)) ?? true;
+
+            if (!isInCurrentRole)
+            {
+                context.Result = new StatusCodeResult((int)System.Net.HttpStatusCode.Forbidden);
+                return;
+            }
+        }
+    }
+
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
@@ -18,7 +59,7 @@ namespace WebApplication1.Controllers
         }
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<User>), 200)]
-        [Authorize(Roles = "user")]
+        [CustomAuthorizeAttribute("user1")]
         public async Task<ActionResult<IEnumerable<User>>> Get()
         {
             var users = await _userDataSource.GetAsync();
