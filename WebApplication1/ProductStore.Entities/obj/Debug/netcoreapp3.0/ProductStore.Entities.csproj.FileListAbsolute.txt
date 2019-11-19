@@ -1,0 +1,14 @@
+C:\Users\Olha_Horban\Desktop\WebApplication1\ProductStore.Entities\bin\Debug\netcoreapp3.0\ProductStore.Entities.deps.json
+C:\Users\Olha_Horban\Desktop\WebApplication1\ProductStore.Entities\bin\Debug\netcoreapp3.0\ProductStore.Entities.dll
+C:\Users\Olha_Horban\Desktop\WebApplication1\ProductStore.Entities\bin\Debug\netcoreapp3.0\ProductStore.Entities.pdb
+C:\Users\Olha_Horban\Desktop\WebApplication1\ProductStore.Entities\obj\Debug\netcoreapp3.0\ProductStore.Entities.AssemblyInfoInputs.cache
+C:\Users\Olha_Horban\Desktop\WebApplication1\ProductStore.Entities\obj\Debug\netcoreapp3.0\ProductStore.Entities.AssemblyInfo.cs
+C:\Users\Olha_Horban\Desktop\WebApplication1\ProductStore.Entities\obj\Debug\netcoreapp3.0\ProductStore.Entities.dll
+C:\Users\Olha_Horban\Desktop\WebApplication1\ProductStore.Entities\obj\Debug\netcoreapp3.0\ProductStore.Entities.pdb
+C:\Users\Olha_Horban\Desktop\repo\mentorshipprogram\WebApplication1\ProductStore.Entities\obj\Debug\netcoreapp3.0\ProductStore.Entities.AssemblyInfoInputs.cache
+C:\Users\Olha_Horban\Desktop\repo\mentorshipprogram\WebApplication1\ProductStore.Entities\obj\Debug\netcoreapp3.0\ProductStore.Entities.AssemblyInfo.cs
+C:\Users\Olha_Horban\Desktop\repo\mentorshipprogram\WebApplication1\ProductStore.Entities\obj\Debug\netcoreapp3.0\ProductStore.Entities.dll
+C:\Users\Olha_Horban\Desktop\repo\mentorshipprogram\WebApplication1\ProductStore.Entities\obj\Debug\netcoreapp3.0\ProductStore.Entities.pdb
+C:\Users\Olha_Horban\Desktop\repo\mentorshipprogram\WebApplication1\ProductStore.Entities\bin\Debug\netcoreapp3.0\ProductStore.Entities.deps.json
+C:\Users\Olha_Horban\Desktop\repo\mentorshipprogram\WebApplication1\ProductStore.Entities\bin\Debug\netcoreapp3.0\ProductStore.Entities.dll
+C:\Users\Olha_Horban\Desktop\repo\mentorshipprogram\WebApplication1\ProductStore.Entities\bin\Debug\netcoreapp3.0\ProductStore.Entities.pdb

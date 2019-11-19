@@ -1,0 +1,79 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Olha_Horban\\Desktop\\repo\\mentorshipprogram\\WebApplication1\\ProductStore.Entities\\ProductStore.Entities.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Olha_Horban\\Desktop\\repo\\mentorshipprogram\\WebApplication1\\ProductStore.Entities\\ProductStore.Entities.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Olha_Horban\\Desktop\\repo\\mentorshipprogram\\WebApplication1\\ProductStore.Entities\\ProductStore.Entities.csproj",
+        "projectName": "ProductStore.Entities",
+        "projectPath": "C:\\Users\\Olha_Horban\\Desktop\\repo\\mentorshipprogram\\WebApplication1\\ProductStore.Entities\\ProductStore.Entities.csproj",
+        "packagesPath": "C:\\Users\\Olha_Horban\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Olha_Horban\\Desktop\\repo\\mentorshipprogram\\WebApplication1\\ProductStore.Entities\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Olha_Horban\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "http://eap-build.w.tr-corporate-nonprod.aws-int.thomsonreuters.com:8624/nuget/EAP/": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.0": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[3.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
