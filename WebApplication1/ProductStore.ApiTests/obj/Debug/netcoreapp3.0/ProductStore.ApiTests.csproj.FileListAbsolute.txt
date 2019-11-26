@@ -19,3 +19,4 @@ C:\Users\Olha_Horban\Desktop\repo\mentorshipprogram\WebApplication1\ProductStore
 C:\Users\Olha_Horban\Desktop\repo\mentorshipprogram\WebApplication1\ProductStore.ApiTests\obj\Debug\netcoreapp3.0\ProductStore.ApiTests.AssemblyInfo.cs
 C:\Users\Olha_Horban\Desktop\repo\mentorshipprogram\WebApplication1\ProductStore.ApiTests\obj\Debug\netcoreapp3.0\ProductStore.ApiTests.dll
 C:\Users\Olha_Horban\Desktop\repo\mentorshipprogram\WebApplication1\ProductStore.ApiTests\obj\Debug\netcoreapp3.0\ProductStore.ApiTests.pdb
+C:\Users\Olha_Horban\Desktop\repo\mentorshipprogram\WebApplication1\ProductStore.ApiTests\obj\Debug\netcoreapp3.0\ProductStore.ApiTests.csprojAssemblyReference.cache

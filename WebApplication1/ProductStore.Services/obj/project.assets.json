@@ -13,6 +13,28 @@
           "lib/net45/EntityFramework.dll": {}
         }
       },
+      "MediatR/7.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/MediatR.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/MediatR.dll": {}
+        }
+      },
+      "MediatR.Extensions.Microsoft.DependencyInjection/7.0.0": {
+        "type": "package",
+        "dependencies": {
+          "MediatR": "7.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/MediatR.Extensions.Microsoft.DependencyInjection.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/MediatR.Extensions.Microsoft.DependencyInjection.dll": {}
+        }
+      },
       "Microsoft.AspNet.Identity.Core/2.2.2": {
         "type": "package",
         "compile": {
@@ -885,6 +907,31 @@
         "tools/init.ps1",
         "tools/install.ps1",
         "tools/migrate.exe"
+      ]
+    },
+    "MediatR/7.0.0": {
+      "sha512": "sgfHxkBsmMlHOD564SnLqTvSbAuGlFiZfc6ybxBSI1wYV/2u+Y5TXtFoIhCISFg5/s/6aMvB338QC2JseHsjTA==",
+      "type": "package",
+      "path": "mediatr/7.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net461/MediatR.dll",
+        "lib/netstandard2.0/MediatR.dll",
+        "mediatr.7.0.0.nupkg.sha512",
+        "mediatr.nuspec"
+      ]
+    },
+    "MediatR.Extensions.Microsoft.DependencyInjection/7.0.0": {
+      "sha512": "DRf8jBnjBg84da1L1L0YmwqkhCV+UJTg7bTBHOhleWrLfrtSK5h5aNeE1HOofs1Afisq03B6H2C10NmS47gmqA==",
+      "type": "package",
+      "path": "mediatr.extensions.microsoft.dependencyinjection/7.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/MediatR.Extensions.Microsoft.DependencyInjection.dll",
+        "mediatr.extensions.microsoft.dependencyinjection.7.0.0.nupkg.sha512",
+        "mediatr.extensions.microsoft.dependencyinjection.nuspec"
       ]
     },
     "Microsoft.AspNet.Identity.Core/2.2.2": {
@@ -2215,6 +2262,8 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.0": [
+      "MediatR >= 7.0.0",
+      "MediatR.Extensions.Microsoft.DependencyInjection >= 7.0.0",
       "Microsoft.AspNet.Identity.EntityFramework >= 2.2.2",
       "Microsoft.AspNetCore.Identity >= 2.2.0",
       "ProductStore.Entities >= 1.0.0",
@@ -2270,6 +2319,14 @@
     "frameworks": {
       "netcoreapp3.0": {
         "dependencies": {
+          "MediatR": {
+            "target": "Package",
+            "version": "[7.0.0, )"
+          },
+          "MediatR.Extensions.Microsoft.DependencyInjection": {
+            "target": "Package",
+            "version": "[7.0.0, )"
+          },
           "Microsoft.AspNet.Identity.EntityFramework": {
             "target": "Package",
             "version": "[2.2.2, )"

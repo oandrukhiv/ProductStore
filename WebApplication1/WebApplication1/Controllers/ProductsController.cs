@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProductStore.Entities.Models;
 using ProductStore.Entities.Repos;
+using ProductStore.Services.Commands.ProductRelated;
+using ProductStore.Services.Queries.ProductRelated;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -12,16 +15,19 @@ namespace WebApplication1.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly IRepository<Product> _productDataSource;
-        public ProductsController(IRepository<Product> productDataSource)
+        private IMediator Mediator { get; }
+
+        public ProductsController(IRepository<Product> productDataSource, IMediator mediator)
         {
             _productDataSource = productDataSource;
+            Mediator = mediator;
         }
 
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<Product>), 200)]
         public async Task<ActionResult<IEnumerable<Product>>> Get()
         {
-            var products = await _productDataSource.GetAsync();
+            var products = await Mediator.Send(new GetAllProductsQuery { });
             return Ok(products);
         }
 
@@ -36,19 +42,19 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPut]
+        [Route("{Edit}")]
         [Authorize]
-        public IActionResult Put(Product product)
+        public async Task<IActionResult> Put(Product product)
         {
-            _productDataSource.Update(product);
+            await Mediator.Send(new UpdateProductCommand { Product = product });
             return NoContent();
         }
 
         [HttpPost]
         [Route("Add")]
-        [Authorize]
-        public IActionResult Post(Product product)
+        public async Task<IActionResult> Post(Product product)
         {
-            _productDataSource.Create(product);
+            await Mediator.Send(new InsertProductCommand { Product = product });
             return Ok(product);
         }
 
@@ -61,7 +67,8 @@ namespace WebApplication1.Controllers
             {
                 return NotFound();
             }
-            _productDataSource.Delete(product);
+            await Mediator.Send(new DeleteProductCommand { Product = product });
+
             return NoContent();
         }
     }

@@ -1,3 +1,4 @@
+using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,6 +12,7 @@ using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using ProductStore.Entities;
 using ProductStore.Services.Options;
+using ProductStore.Services.Queries.ProductRelated;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
@@ -70,6 +72,8 @@ namespace WebApplication1
             services.AddMvc(option => option.EnableEndpointRouting = false)
                 .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
                 .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+            services.AddMediatR(typeof(GetAllProductsQuery).Assembly);
+
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowAll", builder => { builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin(); });
