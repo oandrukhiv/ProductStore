@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using ProductStore.Entities.Models;
@@ -33,7 +34,7 @@ namespace WebApplication1.Controllers
                 // it isn't needed to set unauthorized result 
                 // as the base class already requires the user to be authenticated
                 // this also makes redirect to a login page work properly
-                 context.Result = new UnauthorizedResult();
+                context.Result = new UnauthorizedResult();
                 return;
             }
 
@@ -53,13 +54,16 @@ namespace WebApplication1.Controllers
     public class UsersController : ControllerBase
     {
         private readonly IRepository<User> _userDataSource;
-        public UsersController(IRepository<User> userDataSource)
+        private IMediator _mediator { get; }
+
+        public UsersController(IRepository<User> userDataSource, IMediator mediator)
         {
             _userDataSource = userDataSource;
+            _mediator = mediator;
         }
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<User>), 200)]
-        [CustomAuthorizeAttribute("user1")]
+        [CustomAuthorizeAttribute("user")]
         public async Task<ActionResult<IEnumerable<User>>> Get()
         {
             var users = await _userDataSource.GetAsync();
