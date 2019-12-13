@@ -1,4 +1,5 @@
 ﻿import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios'
 import { Button, FormGroup, Input } from 'reactstrap';
 
@@ -20,6 +21,7 @@ export class Register extends Component {
 
     changeHandler = (e) => {
         this.setState({ [e.target.name]: e.target.value })
+        localStorage.setItem('myValueInLocalStorage', e.target.value);
     }
 
     submitHandler = e => {
@@ -28,6 +30,9 @@ export class Register extends Component {
         axios.post('https://localhost:44304/api/Identity/Register', this.state)
             .then(response => {
                 console.log(response)
+                if (response.status === 200) {
+                    localStorage.setItem('myValueInLocalStorage', response.data.tocken);
+                }
             })
             .catch(error => {
                 console.log(error)
@@ -36,6 +41,7 @@ export class Register extends Component {
 
     render() {
         const { email, password, ConfirmPassword, firstName, lastName, cellNumber } = this.state
+
         return (
             <div>
                 <form onSubmit={this.submitHandler}>
@@ -88,6 +94,9 @@ export class Register extends Component {
                             onChange={this.changeHandler} />
                     </FormGroup>
                     <Button>Register</Button>
+                    <br></br>
+                    <br></br>
+                    <Link to="/Login">Already have an account?</Link>
                 </form>
             </div>
         );

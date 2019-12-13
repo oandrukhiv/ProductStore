@@ -14,6 +14,9 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.0.0" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.0.1" />
+    <PackageReference Include="Serilog" Version="2.9.0" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="3.0.1" />
+    <PackageReference Include="Serilog.Sinks.RollingFile" Version="3.3.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,6 +32,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ProductStore.Entities\ProductStore.Entities.csproj" />
+    <ProjectReference Include="..\ProductStore.Middleware\ProductStore.Middleware.csproj" />
     <ProjectReference Include="..\ProductStore.Services\ProductStore.Services.csproj" />
   </ItemGroup>
 

@@ -17,6 +17,7 @@ namespace ProductStore.Entities
             modelBuilder.ApplyConfiguration(new OrderConfiguration());
             modelBuilder.ApplyConfiguration(new AddressConfiguration());
             modelBuilder.ApplyConfiguration(new CityConfiguration());
+            modelBuilder.ApplyConfiguration(new ErrorConfiguration());
         }
 
         public DbSet<Product> Products { get; set; }
@@ -24,5 +25,6 @@ namespace ProductStore.Entities
         public DbSet<Order> Orders { get; set; }
         public DbSet<Address> Addresses { get; set; }
         public DbSet<City> Cities { get; set; }
+        public DbSet<ErrorModel> Errors { get; set; }
     }
 }

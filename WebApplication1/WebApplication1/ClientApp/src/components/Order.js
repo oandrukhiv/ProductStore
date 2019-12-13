@@ -1,4 +1,8 @@
 ﻿import React, { Component } from 'react';
+import axios from 'axios'
+
+const API = 'https://localhost:44304/api/orders';
+const source = localStorage.getItem('myValueInLocalStorage');
 
 export class Order extends Component {
     static displayName = Order.name;
@@ -11,19 +15,20 @@ export class Order extends Component {
         };
     }
 
-    componentDidMount() {
-        fetch('https://localhost:44304/api/orders')
-            .then(res => res.json())
-            .then(json => {
-                this.setState({
-                    isLoaded: true,
-                    items: json,
-                })
-            });
+    async componentDidMount() {
+        const { data } = await axios.get(API, {
+            headers: {
+                'Authorization': 'Bearer ' + source
+            }
+        })
+        this.setState({ items: data, isLoaded: true }, () => {
+            console.log(this.state.items)
+            return;
+        })
     }
 
     render() {
-        var { isLoaded, items } = this.state;
+        const { isLoaded, items = [] } = this.state;
 
         if (!isLoaded) {
             return <div>Loading...</div>

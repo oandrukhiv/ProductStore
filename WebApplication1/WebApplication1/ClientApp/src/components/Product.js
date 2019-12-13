@@ -1,5 +1,4 @@
 ﻿import React, { Component } from 'react';
-import { Button } from 'reactstrap';
 
 export class Product extends Component {
     static displayName = Product.name;
@@ -35,7 +34,7 @@ export class Product extends Component {
         }
         else {
             return (
-                <table className='table table-striped' aria-labelledby="tabelLabel">
+               <table className='table table-striped' aria-labelledby="tabelLabel">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -52,8 +51,7 @@ export class Product extends Component {
                             </tr>
                         )}
                     </tbody>
-                    <Button color="primary" onClick={this.routeChange}>Create</Button>{' '}
-                </table>                
+                </table>
             );
         }
     }

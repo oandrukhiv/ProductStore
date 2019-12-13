@@ -4,6 +4,7 @@ using ProductStore.Entities.Repos;
 using ProductStore.Services.Interfaces;
 using ProductStore.Services.Options;
 using ProductStore.Services.Services;
+using Serilog;
 
 namespace WebApplication1
 {
@@ -14,6 +15,7 @@ namespace WebApplication1
             services.AddTransient(typeof(IRepository<>), typeof(GenericRepository<>));
             services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
             services.AddScoped<IIdentityService, IdentityService>();
+            services.AddSingleton<ILogger>(provider => Log.Logger);
         }
     }
 }
