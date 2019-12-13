@@ -24,6 +24,9 @@ export class Login extends Component {
         axios.post('https://localhost:44304/api/Identity/Login', this.state)
             .then(response => {
                 console.log(response)
+                if (response.status === 200) {
+                    localStorage.setItem('myValueInLocalStorage', response.data.tocken);
+                }
             })           
             .catch(error => {
                 console.log(error)

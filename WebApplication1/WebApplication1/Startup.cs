@@ -14,8 +14,13 @@ using ProductStore.Entities;
 using ProductStore.Services.Options;
 using ProductStore.Services.Queries.ProductRelated;
 using System;
+using System.Diagnostics;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
+using Microsoft.AspNetCore.Http;
+using ProductStore.Middleware;
+using Microsoft.Extensions.Logging;
+using Serilog;
 
 namespace WebApplication1
 {
@@ -78,12 +83,16 @@ namespace WebApplication1
             {
                 options.AddPolicy("AllowAll", builder => { builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin(); });
             });
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
+            Log.Logger = new LoggerConfiguration()
+                .WriteTo.RollingFile(pathFormat: "logs\\log-{Date}.log")
+                .CreateLogger();
+            loggerFactory.AddSerilog();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -95,24 +104,28 @@ namespace WebApplication1
                 app.UseHsts();
             }
 
+            app.UseRouting();
+            app.UseMiddleware<ErrorHandlingMiddleware>();
+            app.UseMiddleware<RoutingMiddleware>();
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
-            app.UseRouting();
+            
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseMvc();
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.MapControllerRoute(
-            //        name: "default",
-            //        pattern: "{controller}/{action=Index}/{id?}");
-            //});
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller}/{action=Index}/{id?}");
+            });
 
             app.UseSpa(spa =>
             {
                 spa.Options.SourcePath = "ClientApp";
-
+                
                 if (env.IsDevelopment())
                 {
                     spa.UseReactDevelopmentServer(npmScript: "start");

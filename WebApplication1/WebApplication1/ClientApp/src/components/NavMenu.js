@@ -32,7 +32,9 @@ export class NavMenu extends Component {
       collapsed: !this.state.collapsed
     });
   }
-
+    changeHandler = () => {
+        localStorage.removeItem('myValueInLocalStorage');
+    }
   render () {
     return (
       <header>
@@ -60,7 +62,7 @@ export class NavMenu extends Component {
                                     <DropdownItem tag={Link} to="/login" > Login</DropdownItem>
                                     <DropdownItem tag={Link} to="/register">Register</DropdownItem>
                                     <DropdownItem divider />
-                                    <DropdownItem>Logout</DropdownItem>
+                                    <DropdownItem onClick={this.changeHandler}>Logout</DropdownItem>
                                 </DropdownMenu>
                             </UncontrolledDropdown>
               </ul>
